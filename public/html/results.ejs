@@ -51,12 +51,12 @@
                 <h3 class="download-title">Download Quality</h3>
                 <hr class="w-100" />
                 <div class="btn-wrapper d-flex justify-content-center align-items-center">
-                    <form action="/download" method="POST" target="_blank">
+                    <form action="/download" method="POST">
                         <input type="text" name="quality" value="lowest" hidden />
                         <input type="text" name="payload" value="<%= locals.link %>" hidden required />
                         <button class="btn-download" type="submit">Highest</button>
                     </form>
-                    <form action="/download" method="POST" target="_blank">
+                    <form action="/download" method="POST">
                         <input type="text" name="quality" value="highest" hidden />
                         <input type="text" name="payload" value="<%= locals.link %>" hidden required />
                         <button class="btn-download" type="submit">Lowest</button>
