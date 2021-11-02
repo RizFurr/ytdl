@@ -25,7 +25,7 @@ main {
 
 .table-data * {
     border: none !important;
-    font-size: clamp(0.6rem, 7vw, 1.2rem);
+    font-size: clamp(0.6rem, 5vw, 1rem);
 }
 
 .table-data > tbody > tr > *:first-child {
