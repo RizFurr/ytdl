@@ -1,0 +1,51 @@
+@import url(../bootstrap/bootstrap.css);
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap");
+@import url(./_footer.css);
+@import url(./_navbar.css);
+
+:root {
+    --footer-c: #001220;
+    --footer-c-rgb: 0, 18, 32;
+    --header-c: #0036aa;
+    --header-c-rgb: 0, 54, 170;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: content-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bs-dark);
+    color: white;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 0.75rem;
+    background-color: #222;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--bs-primary);
+    border-radius: 100rem;
+}
+
+main {
+    min-height: 65vh;
+}
+
+@media (max-width: 768px) {
+    main {
+        min-height: 75vh;
+    }
+}

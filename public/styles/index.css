@@ -1,0 +1,80 @@
+main {
+    font-family: "Poppins", Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form label {
+    font-size: 2rem;
+}
+
+form {
+    --color: rgba(66, 0, 189, 0.25);
+    font-weight: 400;
+    width: 60%;
+    height: 50vh;
+    border-radius: 1rem;
+    padding: 2rem 3rem;
+    border: 2px solid var(--bs-indigo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:focus-within {
+    background-color: var(--color);
+    box-shadow: 0 0 2px 0 var(--color), 0 0 10px 0 var(--color), 0 0 20px 0 var(--color), 0 0 40px 0 var(--color);
+}
+
+.form-span {
+    width: 80%;
+    height: 100%;
+    flex-direction: column;
+    gap: 30%;
+}
+
+form button {
+    --color: var(--bs-primary);
+    background: none;
+    border: none;
+    outline: none;
+    letter-spacing: 2px;
+    border: 2px solid var(--color);
+    border-radius: 4px;
+    font-size: 1.2rem;
+    width: clamp(4rem, 30%, 15rem);
+    padding: 0.5rem 1.1rem;
+    color: var(--color);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+}
+
+form button:hover {
+    color: white;
+    background-color: var(--color);
+    box-shadow: 0 0 2px 0 var(--color), 0 0 10px 0 var(--color), 0 0 20px 0 var(--color), 0 0 40px 0 var(--color), 0 0 60px 0 var(--color), 0 0 80px 0 var(--color);
+}
+
+@media (max-width: 768px) {
+    form {
+        padding: 0.5rem;
+        padding-bottom: 1.5rem;
+        width: 80vw;
+        height: 40vh;
+    }
+
+    .form-span {
+        gap: 2rem;
+    }
+
+    form label {
+        margin-top: 1rem;
+    }
+
+    form button {
+        margin-top: 0.5rem;
+        font-size: 0.7rem;
+    }
+}

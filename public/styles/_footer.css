@@ -1,0 +1,104 @@
+footer {
+    font-family: "Poppins", Arial;
+    margin-top: auto;
+    position: relative;
+    background-color: var(--footer-c);
+    padding-bottom: 4rem;
+}
+
+footer .svg-separator {
+    aspect-ratio: 900/200;
+    width: 100%;
+    background-image: url(../images/waves.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer .flip {
+    transform: rotate(180deg);
+}
+
+footer .contact {
+    display: flex;
+    height: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    filter: grayscale(100%) invert(100%);
+    padding: 2rem;
+    padding-bottom: 0;
+}
+
+.footer-item,
+.footer-list a {
+    text-align: center;
+    color: #888;
+    opacity: 0.5;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.footer-item:hover,
+.footer-list a:hover {
+    color: #ccc;
+    opacity: 1;
+}
+
+.footer-item img,
+.footer-list img {
+    height: 2rem;
+    width: auto;
+    filter: grayscale(0);
+}
+
+.footer-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-list a {
+    color: #ddd;
+    opacity: 1;
+    text-decoration: none;
+}
+
+.footer-list a:hover {
+    opacity: 0.5;
+}
+
+.footer-list img {
+    filter: invert(100%);
+}
+
+.footer-creator {
+    color: #ddd;
+    text-align: center;
+}
+
+.footer-desc-title {
+    margin-bottom: 0.2rem;
+    color: #aaa;
+    text-align: center;
+    font-style: italic;
+}
+
+.copy-claim {
+    position: absolute;
+    font-size: 1rem;
+    right: 0.5rem;
+    bottom: 0;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .footer-item img,
+    .footer-list img {
+        height: 1.5rem;
+    }
+
+    .copy-claim {
+        font-size: 0.8rem;
+    }
+}

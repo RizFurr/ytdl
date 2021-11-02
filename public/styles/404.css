@@ -1,0 +1,24 @@
+main {
+    font-family: "Fredoka One", Arial;
+    padding: 2rem;
+    text-align: center;
+}
+
+main h1 {
+    font-weight: 300;
+    color: var(--header-c);
+    font-size: clamp(2rem, 8vw, 4rem);
+    margin-bottom: 2rem;
+}
+
+main h1 b {
+    color: var(--bs-warning);
+}
+
+main p {
+    font-size: clamp(1rem, 10vw, 1.5rem);
+}
+main p > b {
+    margin-left: 0.5rem;
+    color: var(--bs-secondary);
+}

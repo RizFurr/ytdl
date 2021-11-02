@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles/styles.css" />
+        <link rel="stylesheet" href="styles/404.css" />
+        <title>ISLA MP3 | 404 Not Found</title>
+        <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+    </head>
+    <body>
+        <%- include("components/_navbar.ejs", {title: "404 Not Found"}) -%>
+        <main class="d-flex justify-content-center align-items-center">
+            <div>
+                <h1><b>404</b> Not Found</h1>
+                <p>Oops, the page you're looking is not available <b>:(</b></p>
+            </div>
+        </main>
+        <%- include("components/_footer.ejs") -%>
+    </body>
+</html>
