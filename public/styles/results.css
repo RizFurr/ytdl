@@ -19,8 +19,8 @@ main {
 }
 
 .table-data {
-    width: 100%
-    max-width: 80vw;
+    width: 100% !important;
+    max-width: 80vw !important;
 }
 
 .table-data * {
