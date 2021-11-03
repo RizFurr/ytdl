@@ -19,7 +19,8 @@ main {
 }
 
 .table-data {
-    width: clamp(none, 100%, 80vw);
+    width: 100%
+    max-width: 80vw;
 }
 
 .table-data * {
