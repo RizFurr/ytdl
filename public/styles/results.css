@@ -19,7 +19,7 @@ main {
 }
 
 .table-data {
-    width: 100%;
+    width: clamp(none, 100%, 80vw);
     word-wrap: break-word;
 }
 
