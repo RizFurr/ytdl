@@ -8,7 +8,6 @@ import { config } from "dotenv";
 import search from "./lib/search";
 import ytdl, { getInfo, MoreVideoDetails, filterFormats } from "ytdl-core";
 import axios from "axios";
-import * as fs from "fs";
 import Ffmpeg from "fluent-ffmpeg";
 
 //Constants
@@ -74,9 +73,6 @@ app.use((req, res) => {
 if (!YOUTUBE_API) throw new ReferenceError("Missing Youtube API Key from the environtment variable");
 else
     app.listen(PORT, () => {
-        fs.readdirSync("temp")
-            .filter((f) => !f.endsWith(".txt"))
-            .forEach((e) => fs.unlinkSync(`temp/${e}`));
         console.log("App is on port : " + PORT);
     });
 
