@@ -5,7 +5,9 @@ import { config } from "dotenv";
 import search from "./lib/search";
 import ytdl, { getInfo, MoreVideoDetails, filterFormats } from "ytdl-core";
 import axios from "axios";
+// import download from "./lib/ytdl";
 import * as fs from "fs";
+import Ffmpeg from "fluent-ffmpeg";
 
 //Constants
 config();
@@ -49,9 +51,17 @@ app.post("/download", checkPayload, async (req, res) => {
 
     res.set("Content-Type", "audio/mp3");
     res.attachment(`${req.videoDetails.title.trim()}.mp3`);
+    // let video = await download(req.videoDetails.video_url, "test", quality);
+
     let video = ytdl(req.videoDetails.video_url, { quality });
-    video.pipe(res);
-    // res.send(fs.readFileSync("temp/" + randName + ".mp3"));
+    let ffmpeg = Ffmpeg(video);
+    ffmpeg
+        .format("mp3")
+        .on("error", (err) => {
+            console.log(err);
+        })
+        .pipe(res, { end: true });
+    // video.pipe(res);
 });
 
 //! Fallback Middleware
