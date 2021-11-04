@@ -1,3 +1,6 @@
+// MIT License
+// Copyright (c) 2021 mangadi3859
+
 //Library & Modules
 import express, { Request, Response, NextFunction } from "express";
 import { join as pathJoin } from "path";
@@ -5,7 +8,6 @@ import { config } from "dotenv";
 import search from "./lib/search";
 import ytdl, { getInfo, MoreVideoDetails, filterFormats } from "ytdl-core";
 import axios from "axios";
-// import download from "./lib/ytdl";
 import * as fs from "fs";
 import Ffmpeg from "fluent-ffmpeg";
 
@@ -51,7 +53,6 @@ app.post("/download", checkPayload, async (req, res) => {
 
     res.set("Content-Type", "audio/mp3");
     res.attachment(`${req.videoDetails.title.trim()}.mp3`);
-    // let video = await download(req.videoDetails.video_url, "test", quality);
 
     let video = ytdl(req.videoDetails.video_url, { quality });
     let ffmpeg = Ffmpeg(video);
@@ -86,7 +87,7 @@ async function checkPayload(req: Request, res: Response, next: NextFunction) {
     if (!validateUrl(payload)) return res.status(400).json({ message: "Invalid Url" });
 
     let info = await getInfo(payload);
-    let formats = filterFormats(info.formats, "audioonly");
+    filterFormats(info.formats, "audioonly");
     if (!info?.videoDetails) return res.status(404).json({ message: "Video Detail Not Found" });
     req["videoDetails"] = info.videoDetails;
     return next();
