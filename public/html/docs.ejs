@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles/styles.css" />
+        <link rel="stylesheet" href="styles/docs.css" />
+        <title>ISLA MP3 | Home</title>
+        <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+    </head>
+    <body>
+        <%- include("components/_navbar.ejs", {title: "MP3 Downloader"}) -%>
+        <main>
+            <section class="about" id="about">
+                <h3 class="section-title">About</h3>
+                <hr />
+                <div class="section-body">
+                    <p>
+                        This is an <b class="point">Web Application</b> to download MP3 files from <a href="https://youtube.com">YouTube</a>. This web is made by me for learning <a href="https://nodejs.org">NodeJs</a>, and for school project. I'm stil <b class="point">16 years</b> old.
+                        <br />
+                        <br />
+                        <i class="darker">For note: I DO NOT OWN ANY OF THE VIDEOS THAT ARE DOWNLOADED FROM THIS WEBSITE!</i>
+                    </p>
+                </div>
+            </section>
+            <section class="start" id="start">
+                <h3 class="section-title">Getting Started</h3>
+                <hr />
+                <div class="section-body">
+                    <ul>
+                        <li>Since you're using this web, i assume that you now how to get a <b class="point">Youtube Link</b>.</li>
+                        <li>First, you need to paste the youtube link in the <a href="/">form</a>.</li>
+                        <li>After that, hit the <b class="point">Search Button</b>, or simply click <b class="point">Enter</b> on your keyboard to submit the url.</li>
+                        <li>After you submit the url, you will be redirected to another url.</li>
+                        <li>On that url, you will find some basic info about the video you searched.</li>
+                        <li>Scroll down until you find <b class="point">Download Quality</b> section.</li>
+                        <li>On that, you can chose between <b class="point">Highest</b> or <b class="point">Lowest</b> option.</li>
+                        <li>After that, please wait for the file to be send to you.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <%- include("components/_footer.ejs") -%>
+    </body>
+</html>

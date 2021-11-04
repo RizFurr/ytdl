@@ -26,7 +26,7 @@ main {
 .table-data * {
     word-wrap: break-word;
     border: none !important;
-    font-size: clamp(0.6rem, 5vw, 1rem);
+    font-size: clamp(0.6rem, 3.25vw, 1rem);
 }
 
 .table-data > tbody > tr > *:first-child {
@@ -120,3 +120,9 @@ main {
         box-shadow: 0 0 2px 0 var(--color), 0 0 10px 0 var(--color), 0 0 20px 0 var(--color), 0 0 40px 0 var(--color);
     }
 }
+
+/* @media (max-width: 768px) {
+    .table-data * {
+        font-size: 0.8rem;
+    }
+} */

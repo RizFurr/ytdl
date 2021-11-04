@@ -1,0 +1,34 @@
+main * {
+    font-family: "Poppins", Arial;
+}
+
+main {
+    margin: 10vw;
+}
+
+main section {
+    margin-bottom: 4rem;
+}
+
+main b {
+    font-weight: bold;
+}
+
+.section-title {
+    margin: 0;
+    padding: 0;
+}
+
+.darker {
+    color: #aaa;
+    opacity: 0.75;
+}
+
+.point {
+    color: #ccc;
+    opacity: 0.9;
+}
+
+.start li {
+    margin-bottom: 0.5rem;
+}

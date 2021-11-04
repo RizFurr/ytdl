@@ -3,10 +3,8 @@ import express, { Request, Response, NextFunction } from "express";
 import { join as pathJoin } from "path";
 import { config } from "dotenv";
 import search from "./lib/search";
-import { getBasicInfo, MoreVideoDetails } from "ytdl-core";
-import download from "./lib/ytdl";
+import ytdl, { getInfo, MoreVideoDetails, filterFormats } from "ytdl-core";
 import axios from "axios";
-import { randomBytes } from "crypto";
 import * as fs from "fs";
 
 //Constants
@@ -28,6 +26,10 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+app.get("/docs", (req, res) => {
+    res.render("docs");
+});
+
 app.get("/result", async (req, res) => {
     const { url } = req.query;
     let result = await search(<string>url);
@@ -44,14 +46,12 @@ app.get("/result", async (req, res) => {
 
 app.post("/download", checkPayload, async (req, res) => {
     const { quality } = req.body;
-    let randName = randomBytes(5).toString("hex");
 
-    let name = await download(req.videoDetails.video_url, randName, quality === "highest");
     res.set("Content-Type", "audio/mp3");
     res.attachment(`${req.videoDetails.title.trim()}.mp3`);
-    res.send(fs.readFileSync("temp/" + randName + ".mp3"));
-    fs.unlinkSync("temp/" + randName + ".mp3");
-    fs.unlinkSync("temp/" + randName + ".mp4");
+    let video = ytdl(req.videoDetails.video_url, { quality });
+    video.pipe(res);
+    // res.send(fs.readFileSync("temp/" + randName + ".mp3"));
 });
 
 //! Fallback Middleware
@@ -75,7 +75,8 @@ async function checkPayload(req: Request, res: Response, next: NextFunction) {
     if (!payload || !quality) return res.status(400).json({ message: "Bad Request" });
     if (!validateUrl(payload)) return res.status(400).json({ message: "Invalid Url" });
 
-    let info = await getBasicInfo(payload);
+    let info = await getInfo(payload);
+    let formats = filterFormats(info.formats, "audioonly");
     if (!info?.videoDetails) return res.status(404).json({ message: "Video Detail Not Found" });
     req["videoDetails"] = info.videoDetails;
     return next();
