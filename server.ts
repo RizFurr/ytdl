@@ -56,8 +56,7 @@ app.post("/download", checkPayload, async (req, res) => {
     let video = ytdl(req.videoDetails.video_url, { quality });
     let ffmpeg = Ffmpeg(video);
     ffmpeg
-        .inputFormat("mp4")
-        .outputFormat("mp3")
+        .format("mp3")
         .on("error", (err) => {
             console.log(err);
         })
