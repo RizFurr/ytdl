@@ -57,7 +57,7 @@ app.post("/download", checkPayload, async (req, res) => {
     let ffmpeg = Ffmpeg(video);
     ffmpeg
         .format("mp3")
-        .addOptions(`-metadata title="${req.videoDetails.video_title}",artist="${req.videoDetails.author.name}"`)
+        .addOptions(`-metadata title="${req.videoDetails.title}",artist="${req.videoDetails.author.name}"`)
         .on("error", (err) => {
             console.log(err);
         })
