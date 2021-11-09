@@ -50,18 +50,18 @@ app.get("/result", async (req, res) => {
 app.post("/download", checkPayload, async (req, res) => {
     const { quality } = req.body;
 
-    res.set("Content-Type", "audio/mp3");
+    res.set("Content-Type", "audio/mpeg");
     res.attachment(`${req.videoDetails.title.trim()}.mp3`);
 
     let video = ytdl(req.videoDetails.video_url, { quality });
     let ffmpeg = Ffmpeg(video);
     ffmpeg
         .format("mp3")
+        .addOptions(`-metadata title="${req.videoDetails.video_title}",artist="${req.videoDetails.author.name}"`)
         .on("error", (err) => {
             console.log(err);
         })
         .pipe(res, { end: true });
-    // video.pipe(res);
 });
 
 //! Fallback Middleware
