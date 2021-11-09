@@ -59,12 +59,12 @@ app.post("/download", checkPayload, async (req, res) => {
     ffmpeg
         .format("mp3")
         .addOptions(
-          "-metadata", `title="${req.videoDetails.title}"`,
-          "-metadata", `artist="${req.videoDetails.author.name}"`,
-          "-metadata", `picture_mime_type="image/jpg"`,
-          "-metadata", `picture_description="Thumbnail"`,
-          "-metadata", `picture_type="Front Cover"`,
-          "-metadata", `picture="data:image/jpg;base64,${Buffer.from(thumb.data).toString("base64")}"`
+          "-metadata", `title=${req.videoDetails.title}`,
+          "-metadata", `artist=${req.videoDetails.author.name}`,
+          "-metadata", `picture mime type=image/jpg`,
+          "-metadata", `picture description=Thumbnail`,
+          "-metadata", `picture type=Front Cover`,
+          "-metadata", `picture=${thumb.data}`
         )
         .on("error", (err) => {
             console.log(err);
