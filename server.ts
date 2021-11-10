@@ -61,9 +61,9 @@ app.post("/download", checkPayload, async (req, res) => {
         .addOptions(
           "-metadata", `title=${req.videoDetails.title}`,
           "-metadata", `artist=${req.videoDetails.author.name}`,
-          "-metadata", `picture-mime-type=image/jpg`,
-          "-metadata", `picture-description=Thumbnail`,
-          "-metadata", `picture-type=Front Cover`,
+          "-metadata", `picture\ mime\ type=image/jpg`,
+          "-metadata", `picture\ description=Thumbnail`,
+          "-metadata", `picture\ type=Front Cover`,
           "-metadata", `picture=${Buffer.from(thumb.data).toString("binary")}`
         )
         .on("error", (err) => {
