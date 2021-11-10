@@ -57,7 +57,7 @@ app.post("/download", checkPayload, async (req, res) => {
     let thumb = await axios.get(req.videoDetails.thumbnails[0].url, {responseType: "arraybuffer"});
     let ffmpeg = Ffmpeg(video);
     ffmpeg
-        .format("mp3"), 
+        .format("mp3")
         .addOptions("-c", "copy", "-map_metadata", "0")
         // .addOptions(
         //   "-metadata", `title=${req.videoDetails.title}`,
