@@ -58,7 +58,7 @@ app.post("/download", checkPayload, async (req, res) => {
     let ffmpeg = Ffmpeg(video);
     ffmpeg
         .format("mp3")
-        .addOptions("-c", "copy", "-map_metadata", "0")
+        .addOptions("-map_metadata", "0")
         // .addOptions(
         //   "-metadata", `title=${req.videoDetails.title}`,
         //   "-metadata", `artist=${req.videoDetails.author.name}`,
