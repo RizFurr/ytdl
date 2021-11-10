@@ -67,7 +67,7 @@ app.post("/download", checkPayload, async (req, res) => {
         //   "-metadata", `picture\ type=Front Cover`,
         //   "-metadata", `picture=${Buffer.from(thumb.data).toString("binary")}`
         // )
-        .on("error", (err) => {
+        .on("error", (err: any) => {
             console.log(err);
         })
         .pipe(res, { end: true });
