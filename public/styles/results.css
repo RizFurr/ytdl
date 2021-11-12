@@ -44,7 +44,7 @@ main {
 .thumb {
     width: 80%;
     height: auto;
-    border: 0.5rem solid var(--bs-light);
+    border: 0.5em solid var(--bs-light);
     border-radius: 0.5rem;
 }
 

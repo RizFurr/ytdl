@@ -7,7 +7,7 @@ This is an <b>Web Application</b> to download MP3 files from [YouTube](https://y
 ## Getting Started
 
 -   Since you're using this web, i assume that you know how to get a <b>Youtube Link</b>.
--   First, you need to paste the youtube link in the <a href="/">form</a>.
+-   First, you need to paste the youtube link in the form.
 -   After that, hit the <b>Search Button</b>, or simply click <b>Enter</b> on keyboard to submit the url.
 -   After you submit the url, you will be redirected to another url.
 -   On that url, you will find some basic info about the video you searched.
