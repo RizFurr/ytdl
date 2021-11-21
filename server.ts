@@ -49,7 +49,6 @@ app.get("/result", async (req, res) => {
 
 app.post("/download", checkPayload, async (req, res) => {
     const { quality } = req.body;
-    console.log(quality);
 
     res.set("Content-Type", "audio/mpeg");
     res.attachment(`${req.videoDetails.title.trim()}.mp3`);
