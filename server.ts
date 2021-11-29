@@ -54,11 +54,10 @@ app.post("/download", checkPayload, async (req, res) => {
     res.attachment(`${req.videoDetails.title.trim()}.mp3`);
 
     let video = ytdl(req.videoDetails.video_url, { quality });
-    let thumb = await axios.get(req.videoDetails.thumbnails[0].url, { responseType: "arraybuffer" });
     let ffmpeg = Ffmpeg(video);
     ffmpeg
         .format("mp3")
-        .addOptions("-metadata", `title=${req.videoDetails.title}`, "-metadata", `artist=${req.videoDetails.author.name}`, "-metadata", `picture\ mime\ type=image/jpg`, "-metadata", `picture\ description=Thumbnail`, "-metadata", `picture\ type=Front Cover`, "-metadata", `picture=${Buffer.from(thumb.data).toString("binary")}`)
+        .addOptions("-metadata", `title=${req.videoDetails.title}`, "-metadata", `artist=${req.videoDetails.author.name}`, "-metadata", `picture\ mime\ type=image/jpg`, "-metadata", `picture\ description=Thumbnail`, "-metadata", `picture\ type=Front Cover`)
         .on("error", (err: any) => {
             console.log(err);
         })
