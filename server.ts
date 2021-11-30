@@ -53,7 +53,7 @@ app.post("/download", checkPayload, async (req, res) => {
     res.set("Content-Type", "audio/mpeg");
     res.attachment(`${req.videoDetails.title.trim()}.mp3`);
 
-    let video = ytdl(req.videoDetails.video_url, { quality });
+    let video = ytdl(req.videoDetails.video_url, { quality, filter: "audioonly" });
     let ffmpeg = Ffmpeg(video);
     ffmpeg
         .format("mp3")
