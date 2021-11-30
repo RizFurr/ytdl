@@ -58,7 +58,7 @@ app.post("/download", checkPayload, async (req, res) => {
     ffmpeg
         .audioBitrate(quality === "highest" ? "256" : "128")
         .format("mp3")
-        .addOptions("-metadata", `title=${req.videoDetails.title}`, "-metadata", `artist=${req.videoDetails.author.name}`, "-metadata", `picture\ mime\ type=image/jpg`, "-metadata", `picture\ description=Thumbnail`, "-metadata", `picture\ type=Front Cover`)
+        .addOptions("-metadata", `title=${req.videoDetails.title}`, "-metadata", `artist=${req.videoDetails.author.name}`, "-metadata", `picture\ mime\ type=image/jpg`)
         .on("error", (err: any) => {
             console.log(err);
         })
