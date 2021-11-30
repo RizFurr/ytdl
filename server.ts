@@ -56,6 +56,7 @@ app.post("/download", checkPayload, async (req, res) => {
     let video = ytdl(req.videoDetails.video_url, { quality, filter: "audioonly" });
     let ffmpeg = Ffmpeg(video);
     ffmpeg
+        .audioBitrate(quality === "highest" ? "256" : "128")
         .format("mp3")
         .addOptions("-metadata", `title=${req.videoDetails.title}`, "-metadata", `artist=${req.videoDetails.author.name}`, "-metadata", `picture\ mime\ type=image/jpg`, "-metadata", `picture\ description=Thumbnail`, "-metadata", `picture\ type=Front Cover`)
         .on("error", (err: any) => {
