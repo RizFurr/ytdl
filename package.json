@@ -1,7 +1,7 @@
 {
     "name": "isla-mp3",
-    "version": "1.0.0",
-    "description": "",
+    "version": "1.0.3",
+    "description": "Website for downloading youtube video as mp3 file",
     "main": "server.ts",
     "scripts": {
         "heroku-prebuild": "npm install",
@@ -9,8 +9,8 @@
         "dev": "nodemon server.ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [],
-    "author": "",
+    "keywords": ["youtube", "ffmpeg", "download"],
+    "author": "mangadi3859",
     "license": "MIT",
     "dependencies": {
         "axios": "^0.24.0",
