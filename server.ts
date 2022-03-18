@@ -49,9 +49,8 @@ app.get("/result", async (req, res) => {
 
 app.post("/download", checkPayload, async (req, res) => {
     const { quality } = req.body;
-
     res.set("Content-Type", "audio/mpeg");
-    res.attachment(`${req.videoDetails.title.trim()}.mp3`);
+    res.attachment(`RizFurr MP3 - ${req.videoDetails.title.trim()}.mp3`);
 
     let video = ytdl(req.videoDetails.video_url, { quality, filter: "audioonly" });
     let ffmpeg = Ffmpeg(video);
