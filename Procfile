@@ -1,1 +1,1 @@
-web: yarn && yarn start
+web: npm i nodemon && nodemon server.ts
