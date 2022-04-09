@@ -1,1 +1,2 @@
-web: npm i nodemon && nodemon server.ts
+web: npm install yarn && yarn start
+web2: yarn dev
