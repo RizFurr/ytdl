@@ -15,7 +15,8 @@ config();
 const app = express();
 const ROOT = pathJoin(__dirname, "public", "html");
 const PORT = process.env.PORT || 3000;
-//const YOUTUBE_API = process.env.YOUTUBE_API;
+const YOUTUBE_API = 'AIzaSyDitouVSFUB9-9nV5qLiUZjJKSx4SVNsOc';
+
 
 //SetUp
 app.set("view engine", "ejs");
@@ -70,8 +71,8 @@ app.use((req, res) => {
 });
 
 //Run
-/*if (!YOUTUBE_API) throw new ReferenceError("Missing Youtube API Key from the environtment variable");
-else*/
+if (!YOUTUBE_API) throw new ReferenceError("Missing Youtube API Key from the environtment variable");
+else
     app.listen(PORT, () => {
         console.log("App is on port : " + PORT);
     });
