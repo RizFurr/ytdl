@@ -15,7 +15,7 @@ config();
 const app = express();
 const ROOT = pathJoin(__dirname, "public", "html");
 const PORT = process.env.PORT || 8000;
-const YOUTUBE_API = process.env.YOUTUBE_API || AIzaSyBFsST1u9M2slFAYOuyKVgEpylk3rgKuHw;
+const YOUTUBE_API = require('./ytdl-db-key');
 
 
 //SetUp
