@@ -4,14 +4,12 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Download your favorite youtube video to mp3" />
-        <meta name="copyright" content="mangadi3859 (2021)" />
+        <%- include("components/_meta.ejs") -%>
         <link rel="stylesheet" href="styles/styles.css" />
         <link rel="stylesheet" href="styles/results.css" />
         <title>RizFurr YTMP3 • Result</title>
-        <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
-    </head>
-    <body>
+        </head>
+        <body>
         <%- include("components/_navbar.ejs", {title: "Result"}) -%>
         <main class="px-5 d-flex flex-column justify-content-evenly align-items-center">
             <section class="section-info d-flex justify-content-center align-items-center flex-column">
@@ -19,7 +17,7 @@
                     <img src="<%= locals.thumb %>" class="thumb" />
                     <hr />
                     <table class="table-data table table-responsive text-white">
-                        <tbody>
+                       <tbody>
                             <tr>
                                 <td>Title</td>
                                 <td><%= locals.title %></td>
@@ -29,7 +27,7 @@
                                 <td><%= locals.description %></td>
                             </tr>
                             <tr>
-                                <td>Video URL</td>
+                                <td>Link Video</td>
                                 <td><a href="<%= locals.link %>" target="_blank"><%= locals.link %></a></td>
                             </tr>
                             <tr>
