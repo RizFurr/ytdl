@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="styles/styles.css" />
         <link rel="stylesheet" href="styles/index.css" />
         <%- include("components/_meta.ejs") -%>
-        <title>RizYtmp3Dl</title>
+        <title>RizFurr • YTMP3</title>
     </head>
     <body>
         <%- include("components/_navbar.ejs", {title: "MP3 Downloader"}) -%>
@@ -15,7 +15,7 @@
             <form action="/result" method="GET" class="flex-column">
                 <label for="i-url">Search</label>
                 <span class="d-flex justify-content-center align-items-center form-span">
-                    <input type="url" name="url" id="i-url" class="form-control" required placeholder="https://youtu.be/url_here" size="30" />
+                    <input type="url" name="url" id="i-url" class="form-control" required placeholder="Enter Url Here" size="30" />
                     <button class="mx-2" type="submit">Download</button>
                 </span>
             </form>
