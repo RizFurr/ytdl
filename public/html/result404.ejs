@@ -9,17 +9,17 @@
         <link rel="stylesheet" href="styles/styles.css" />
         <link rel="stylesheet" href="styles/404.css" />
         <title><%= locals.title || "Result Not Found" %></title>
-        <link rel="shortcut icon" href="images/icon.jpg" type="image/x-icon" />
-    </head>
-    <body>
+        <link rel="icon" href="images/icon.jpg" />
+        </head>
+        <body>
         <%- include("components/_navbar.ejs", {title: `${locals.title || "Result Not Found"}`}) -%>
         <main class="d-flex justify-content-center align-items-center">
-            <div>
-                <h1><b><%= locals.title || "Result Not Found" %></b></h1>
-                <p><%= locals.message || "Oof, We can't find the video you're looking for"%> <b>:(</b></p>
-                <a class="fs-4" href="/">Back</a>
-            </div>
+        <div>
+        <h1><b><%= locals.title || "Result Not Found" %></b></h1>
+        <p><%= locals.message || "Oof, We can't find the video you're looking for"%> <b>:(</b></p>
+        <a class="fs-4" href="/">Back</a>
+        </div>
         </main>
         <%- include("components/_footer.ejs") -%>
-    </body>
+   </body>
 </html>
