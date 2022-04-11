@@ -14,8 +14,8 @@ import Ffmpeg from "fluent-ffmpeg";
 config();
 const app = express();
 const ROOT = pathJoin(__dirname, "public", "html");
-const PORT = process.env.PORT || 3000;
-const YOUTUBE_API = 'AIzaSyDitouVSFUB9-9nV5qLiUZjJKSx4SVNsOc';
+const PORT = process.env.PORT || 8000;
+const YOUTUBE_API = "AIzaSyA-l5_2YCDQ-m0PCm8BoLOGI8vOXWn8ve8";
 
 
 //SetUp
