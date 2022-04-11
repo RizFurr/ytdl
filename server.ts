@@ -1,5 +1,5 @@
 // MIT License
-// Copyright (c) 2021 mangadi3859
+// Copyright (c) 2022 By RizFurr
 
 //Library & Modules
 import express, { Request, Response, NextFunction } from "express";
@@ -15,7 +15,7 @@ config();
 const app = express();
 const ROOT = pathJoin(__dirname, "public", "html");
 const PORT = process.env.PORT || 8000;
-const YOUTUBE_API = require('./ytdl-db-key');
+
 
 
 //SetUp
@@ -51,7 +51,7 @@ app.get("/result", async (req, res) => {
 app.post("/download", checkPayload, async (req, res) => {
     const { quality } = req.body;
     res.set("Content-Type", "audio/mpeg");
-    res.attachment(`RizFurr MP3 - ${req.videoDetails.title.trim()}.mp3`);
+    res.attachment(`${req.videoDetails.title.trim()}.mp3`);
 
     let video = ytdl(req.videoDetails.video_url, { quality, filter: "audioonly" });
     let ffmpeg = Ffmpeg(video);
@@ -71,8 +71,6 @@ app.use((req, res) => {
 });
 
 //Run
-if (!YOUTUBE_API) throw new ReferenceError("Missing Youtube API Key from the environtment variable");
-else
     app.listen(PORT, () => {
         console.log("App is on port : " + PORT);
     });
