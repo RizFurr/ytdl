@@ -1,22 +1,14 @@
-// MIT License
-// Copyright (c) 2022 By RizFurr
-
-//Library & Modules
 import express, { Request, Response, NextFunction } from "express";
 import { join as pathJoin } from "path";
-import { config } from "dotenv";
 import search from "./lib/search";
 import ytdl, { getInfo, MoreVideoDetails, filterFormats } from "ytdl-core";
 import axios from "axios";
 import Ffmpeg from "fluent-ffmpeg";
 
 //Constants
-config();
 const app = express();
 const ROOT = pathJoin(__dirname, "public", "html");
-const PORT = process.env.PORT || 8000;
-
-
+const PORT = 8000;
 
 //SetUp
 app.set("view engine", "ejs");
@@ -37,30 +29,44 @@ app.get("/docs", (req, res) => {
 app.get("/result", async (req, res) => {
     const { url } = req.query;
     let result = await search(<string>url);
-    if (!url) return res.status(400).render("result404", { title: "Missing Url", message: "How sad, it's a Bad Request. Try it again, but this time make sure to search a real url" });
-    if (!validateUrl(<string>url)) return res.status(400).render("result404", { title: "Not Valid URL", message: "Tch, it's not a youtube URL!" });
+    if (!url) return res.status(400).render("result404", { title: "Missing Url", message: "How sad, it's a Bad Request. Try it again, but this time make sure to search a real url X3" });
+    if (!validateUrl(<string>url)) return res.status(400).render("result404", { title: "Not Valid URL", message: "Mhh it's not a Youtube URL >:3" });
     if (!result?.results?.length || result.results[0].link.match(/\/channel\//)) return res.status(404).render("result404");
 
     let current = result.results[0];
-    let thumb = await axios.get(<string>current.thumbnails.medium?.url, { responseType: "arraybuffer" }).catch(() => ({ data: "" }));
+    let thumb = await axios.get(<string>current.thumbnails.high?.url, { responseType: "arraybuffer" }).catch(() => ({ data: "" }));
     let thumb64 = `data:image/jpg;base64,${Buffer.from(thumb.data).toString("base64")}`;
-
-    res.render("results", { title: current.title, link: current.link, videoId: current.id, description: current.description, author: current.channelTitle, releaseDate: new Date(current.publishedAt).toDateString(), thumb: thumb64, authorId: current.channelId });
+    res.render("results", { 
+    title: current.title, 
+    link: current.link,
+    videoId: current.id, 
+    description: current.description, 
+    author: current.channelTitle, releaseDate: new Date(current.publishedAt).toDateString(), 
+    thumb: thumb64, 
+    authorId: current.channelId });
 });
+
+app.post("/downloadVideo", checkPayload2, async (req, res) => {
+    const { quality } = req.body;
+    res.set("Content-Type", "video/mp4");
+    res.attachment(`${req.videoDetails.title.trim()}.mp4`);
+    let video = ytdl(req.videoDetails.video_url, { quality, filter: "videoandaudio" }).pipe(res, { end: true });
+});
+
 
 app.post("/download", checkPayload, async (req, res) => {
     const { quality } = req.body;
     res.set("Content-Type", "audio/mpeg");
     res.attachment(`${req.videoDetails.title.trim()}.mp3`);
-
     let video = ytdl(req.videoDetails.video_url, { quality, filter: "audioonly" });
+    
     let ffmpeg = Ffmpeg(video);
     ffmpeg
-        .audioBitrate(quality === "highestaudio" ? "256" : "128")
+        .audioBitrate(quality === "highestaudio" ? "320" : "128")
         .format("mp3")
         .addOptions("-metadata", `title=${req.videoDetails.title}`, "-metadata", `artist=${req.videoDetails.author.name}`, "-metadata", `picture\ mime\ type=image/jpg`)
-        .on("error", (err: any) => {
-            console.log(err);
+          .on("error", (err: any) => {
+          console.log(err);
         })
         .pipe(res, { end: true });
 });
@@ -83,6 +89,20 @@ async function checkPayload(req: Request, res: Response, next: NextFunction) {
 
     let info = await getInfo(payload);
     filterFormats(info.formats, "audioonly");
+    if (!info?.videoDetails) return res.status(404).json({ message: "Video Detail Not Found" });
+    req["videoDetails"] = info.videoDetails;
+    return next();
+}
+
+
+//Custom Middleware
+async function checkPayload2(req: Request, res: Response, next: NextFunction) {
+    const { payload, quality } = req.body;
+    if (!payload || !quality) return res.status(400).json({ message: "Bad Request" });
+    if (!validateUrl(payload)) return res.status(400).json({ message: "Invalid Url" });
+
+    let info = await getInfo(payload);
+    filterFormats(info.formats, "videoandaudio");
     if (!info?.videoDetails) return res.status(404).json({ message: "Video Detail Not Found" });
     req["videoDetails"] = info.videoDetails;
     return next();
